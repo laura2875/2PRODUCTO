@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA</title>
+    <link rel="stylesheet" href="w3.css">
+    <link rel="manifest" href="manifiesto.json">
+</head>
+
+<body>
+    <div class="w3-row">
+        <div class="w3-col s12 w3-amber w3-center">
+            <font size=3&gt color="White">Resuelve un sistema de dos ecuaciones lineales con dos incognitas por los métodos de sustitucion y
+                gráfico </font> 
+        </div>
+    </div>
+
+    <div class="w3-row">
+        <div class="w3-col s3 w3-green w3-center">
+        <form name="form" action="" method="get">
+            <a>ax + by = c(Ec. 1)</a>
+            <br />
+            <a>dx + ey = f(Ec. 2)</a>
+            <br /><br />
+            <a>A: <input style="width: 20%;" type="text" id="a" name="a" value="2"></a>
+            <a>B: <input style="width: 20%;" type="text" id="b" name="b" value="-1"></a>
+            <a>C: <input style="width: 20%;" type="text" id="c" name="c" value="5"></a><br>
+            <a>D: <input style="width: 20%;" type="text" id="d" name="d" value="1"></a>
+            <a>E: <input style="width: 20%;" type="text" id="e" name="e" value="4"></a>
+            <a>F: <input style="width: 20%;" type="text" id="f" name="f" value="7"></a>
+            <br /><br />
+            <a>Intervalo [x1, x2] en X para Ec. 1:</a>
+            <br />
+            <a>X1: <input style="width: 15%;" type="text" id="x1" name="x1" value="-2"></a>
+            <a>X2: <input style="width: 15%;" type="text" id="x2" name="x2" value="5"></a>
+            <br /><br />
+            <a>Intervalo [x3, x4] en X para Ec. 2:</a>
+            <br />
+            <a>X3: <input style="width: 15%;" type="text" id="x3" name="x3" value="-7"></a>
+            <a>X4: <input style="width: 15%;" type="text" id="x4" name="x4" value="12"></a>
+            <br>
+            <br>
+            </form>
+            <button onclick="sol()">
+                Calcular X y Y
+            </button>
+            <br>
+            <br>
+            <div id="resultadoxy">
+            </div>
+            <div id="resultadox1">
+            </div>
+            <div id="resultadox2">
+            </div>
+            <div id="resultadox3">
+            </div>
+            <div id="resultadox4">
+            </div>
+            <div id="res2">
+            </div>
+        </div>
+        
+        <div class="w3-col s8 w3-white">
+            <canvas id="lienzo" style=" position:absolute" width="1470" height="700" class="w3-white"></canvas>
+            <canvas id="lienzo2" style=" position:absolute" width="1470" height="700"></canvas>
+            <canvas id="lienzo3" style=" position:absolute" width="1470" height="700"></canvas>
+            <canvas id="lienzo4" style=" position:absolute" width="1470" height="700"></canvas>
+            <canvas id="lienzo5" style=" position:absolute" width="1470" height="700"></canvas>
+            <canvas id="lienzo6" style=" position:absolute" width="1470" height="700"></canvas>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        if('serviceWorker' in navigator){
+            navigator.serviceWorker.register('sw.js')
+            .then(
+                function(registration){
+                    alert('Reg. satisfactorio del sw');
+                    console.log('Reg. satisfactorio del sw en el ámbito: ',
+                                registration.scope);
+                }
+            ).catch(
+                function(err){
+                    alert('El SW no se registró');
+                    console.log('El SW no se registró', err);
+                }
+            );
+        }
+    </script>
+</body>
+
+</html>
